@@ -1,197 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>太阳系</title>
     <style>
-        .box {
-            position: absolute;
-            height: 400px;
-            width: 400px;
-            left: 201px;
+        body {
+            background-color: #333;
+            margin: 0;
             overflow: hidden;
-            z-index: 1;
-            /*border: 1px solid black;*/
-            border-bottom: none;
+            background-image: url("bg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100% ;
+            height: 1000px;
         }
 
-        main {
-            width: 600px;
-            height: 600px;
-            margin: 0 auto;
-        }
+        .main {}
 
-        .wrap {
-            width: 402px;
-            height: 100px;
+        .sun {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            background-image: url("sun.png");
+            background-size: contain;
+            /*第一个值水平方向移动距离，可以是负值
+              第二个值竖直方向移动距离
+              第三个值模糊度
+              第四个颜色
+            */
+            box-shadow: 0px 0px 270px orange;
             position: absolute;
-            left: 200px;
-            top: 100px;
-            background-color: white;
-            border-bottom: 1px solid black;
-            z-index: 3;
+            top: 50%;
+            left: 50%;
+            margin-left: -35px;
+            margin-top: -35px;
+            animation-name: run;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
         }
 
-        .box2 {
+        .MercuryPath {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
             position: absolute;
-            height: 400px;
-            width: 400px;
-            left: 200px;
-            top: 200px;
-            z-index: 0;
-            border: 1px solid black;
-            text-align: center;
+            left: 50%;
+            top: 50%;
+            border: 1px solid white;
+            margin-left: -65px;
+            margin-top: -65px;
+            animation-name: run;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
         }
 
-        .item {
-            float: left;
-            height: 100px;
-            width: 100px;
-            box-sizing: border-box;
-            background-color: white;
-            border: none;
+        .mercury {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #9b6928;
+            position: absolute;
+            top: 60px;
+            margin-left: -5px;
         }
 
-        .black {
-            float: left;
-            height: 100px;
-            width: 100px;
-            box-sizing: border-box;
-            background-color: black;
+        @keyframes run {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
-        button {
-            margin-top: 20px;
+        .VenusPath {
+            width: 200px;
+            height: 200px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+            animation-name: run;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
         }
+
+        .venus {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 95px;
+            margin-left: -5px;
+        }
+
+        .earthPath {
+            width: 270px;
+            height: 270px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -135px;
+            margin-top: -135px;
+            animation-name: run;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .earth {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            top: 125px;
+            margin-left: -10px;
+            animation-name: run;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .moon {
+            width: 10px;
+            height: 10px;
+            background-color: lightblue;
+            border-radius: 50%;
+            position: absolute;
+            margin-left: -13px;
+            top: -6px;
+        }
+
+        .marsPath {
+            width: 340px;
+            height: 340px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -170px;
+            margin-top: -170px;
+            animation-name: run;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .mars {
+            width: 12px;
+            height: 12px;
+            background-color: goldenrod;
+            border-radius: 50%;
+            position: absolute;
+            top: 164px;
+            margin-left: -6px;
+        }
+
+        .JupiterPath {
+            width: 410px;
+            height: 410px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -205px;
+            margin-top: -205px;
+            animation-name: run;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .jupiter {
+            width: 12px;
+            height: 12px;
+            background-color: green;
+            border-radius: 50%;
+            position: absolute;
+            top: 199px;
+            margin-left: -6px;
+        }
+
+        .SaturnPath {
+            width: 480px;
+            height: 480px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -240px;
+            margin-top: -240px;
+            animation-name: run;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .saturn {
+            width: 12px;
+            height: 12px;
+            background-color: lightgray;
+            border-radius: 50%;
+            position: absolute;
+            top: 234px;
+            margin-left: -6px;
+        }
+
+        .saturnCircle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid lightgray;
+            border-radius: 50%;
+            margin-left: -6px;
+            margin-top: -6px;
+            box-shadow: 0 0 12px lightgray;
+        }
+
+        .UranusPath {
+            width: 550px;
+            height: 550px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -275px;
+            margin-top: -275px;
+            animation-name: run;
+            animation-duration: 9s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .uranus {
+            width: 12px;
+            height: 12px;
+            background-color: brown;
+            border-radius: 50%;
+            position: absolute;
+            top: 269px;
+            margin-left: -6px;
+        }
+
+        .NeptunePath {
+            width: 620px;
+            height: 620px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -310px;
+            margin-top: -310px;
+            animation-name: run;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .neptune {
+            width: 12px;
+            height: 12px;
+            background-color: lightseagreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 304px;
+            margin-left: -6px;
+        }
+      
     </style>
 </head>
 
 <body>
     <main>
+        <div class="sun">
+        </div>
 
-        <!--用来遮住上半部分-->
-        <div class="wrap"></div>
-        <div id="box" class="box">
+        <div class="MercuryPath">
+            <div class="mercury">
+
+            </div>
         </div>
-        <div class="box2">
-            <div class="row">
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
+
+        <div class="VenusPath">
+            <div class="venus">
+
             </div>
-            <div class="row">
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-            </div>
-            <div class="row">
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-            </div>
-            <div class="row">
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-            </div>
-            <button id="start">开始游戏</button>
-            <button id="pause">暂停游戏</button>
         </div>
-        <h1>得分：0</h1>
+
+        <div class="earthPath">
+            <div class="earth" >
+                <img  src="earth.png" width="20px" height="20px" alt="">
+                <div class="moon">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="marsPath">
+            <div class="mars">
+
+            </div>
+        </div>
+
+        <div class="JupiterPath">
+            <div class="jupiter">
+
+            </div>
+        </div>
+
+        <div class="SaturnPath">
+            <div class="saturn">
+                <div class="saturnCircle">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="UranusPath">
+            <div class="uranus">
+
+            </div>
+        </div>
+
+        <div class="NeptunePath">
+            <div class="neptune">
+
+            </div>
+        </div>
     </main>
-    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
-    <script>
-        var box = document.getElementById('box');
-        var speed = 0;
-        var change = 100;
-        var mt = 200;
-        var times;
-        var isStart = false;
-        var score = 0;
-        function createRow() {
-            var blackNum = Math.floor(Math.random() * 4);
-            var row = document.createElement('div');
-
-            row.className = 'row';
-            for (var i = 0; i < 4; i++) {
-
-                var item = document.createElement('div');
-                if (blackNum == i) {
-                    item.className = 'black';
-                }
-                else {
-                    item.className = 'item';
-                }
-                row.appendChild(item);
-            }
-
-            box.insertBefore(row, box.firstChild);
-            // box.style.marginTop = mt + 'px';
-            box.style.marginTop = mt + 'px';
-            mt -= 100;
-
-            //判断长度 并且删除最后一个
-            if (box.querySelectorAll('.row').length > 4) {
-                $('#box').children('div:last-child').remove();
-                gameover();
-                notClick();
-            }
-        }
-        function move() {
-            // 给最后一个row 标记 是最后一行
-
-            $('#box').children('div:last-child').addClass('last');
-            speed += 1;
-            box.style.top = speed + 'px';
-            if (change == 100) {
-                createRow();
-                change = 0;
-            }
-            change += 1;
-        }
-        createRow();
-        document.getElementById('start').addEventListener('click', function () {
-            if (isStart == false) {
-                times = setInterval(move, 10);
-                isStart = true;
-            }
-        });
-        document.getElementById('pause').addEventListener('click', function () {
-            window.clearInterval(times);
-            isStart = false;
-            notClick();
-        });
-        $(document).on('click', '.last > .black', function () {
-            $(this).parent().remove();
-            score++;
-            $('h1').text('得分：' + score);
-
-        })
-        $(document).on('click', '.last > .item', function () {
-            score = 0;
-            gameover();
-            notClick();
-
-        })
-
-        function gameover() {
-            alert('game over');
-            window.clearInterval(times);
-            isStart = false;
-            $('h1').text('得分：' + score);
-
-        }
-        function notClick() {
-            $('#box').children('div:last-child').removeClass('last');
-        }
-    </script>
 </body>
 
 </html>
