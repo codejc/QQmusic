@@ -5,40 +5,193 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>别踩白块</title>
+    <title>Document</title>
     <style>
-        h1{
-            font-size: 80px;
-        }
-        section{
-            text-align: center;
+        .box {
+            position: absolute;
+            height: 400px;
             width: 400px;
+            left: 201px;
+            overflow: hidden;
+            z-index: 1;
+            /*border: 1px solid black;*/
+            border-bottom: none;
+        }
+
+        main {
+            width: 600px;
             height: 600px;
             margin: 0 auto;
+        }
+
+        .wrap {
+            width: 402px;
+            height: 100px;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            background-color: white;
+            border-bottom: 1px solid black;
+            z-index: 3;
+        }
+
+        .box2 {
+            position: absolute;
+            height: 400px;
+            width: 400px;
+            left: 200px;
+            top: 200px;
+            z-index: 0;
             border: 1px solid black;
+            text-align: center;
         }
-        a{
-            text-decoration-line: none;
-            font-size: 25px;
-            
+
+        .item {
+            float: left;
+            height: 100px;
+            width: 100px;
+            box-sizing: border-box;
+            background-color: white;
+            border: none;
         }
-        
+
+        .black {
+            float: left;
+            height: 100px;
+            width: 100px;
+            box-sizing: border-box;
+            background-color: black;
+        }
+
+        button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 
 <body>
+    <main>
 
-    <section>
-        <h1>
-            别踩白块
-        </h1>
-        <br>
-        <br>
-         <br>
-        <h3><a href="别踩白块（滑动版）.html">滑动模式</a></h3>
-        <h3><a href="别踩白块（限时版）.html">限时模式</a></h3>
+        <!--用来遮住上半部分-->
+        <div class="wrap"></div>
+        <div id="box" class="box">
+        </div>
+        <div class="box2">
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <button id="start">开始游戏</button>
+            <button id="pause">暂停游戏</button>
+        </div>
+        <h1>得分：0</h1>
+    </main>
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script>
+        var box = document.getElementById('box');
+        var speed = 0;
+        var change = 100;
+        var mt = 200;
+        var times;
+        var isStart = false;
+        var score = 0;
+        function createRow() {
+            var blackNum = Math.floor(Math.random() * 4);
+            var row = document.createElement('div');
 
-    </section>
+            row.className = 'row';
+            for (var i = 0; i < 4; i++) {
+
+                var item = document.createElement('div');
+                if (blackNum == i) {
+                    item.className = 'black';
+                }
+                else {
+                    item.className = 'item';
+                }
+                row.appendChild(item);
+            }
+
+            box.insertBefore(row, box.firstChild);
+            // box.style.marginTop = mt + 'px';
+            box.style.marginTop = mt + 'px';
+            mt -= 100;
+
+            //判断长度 并且删除最后一个
+            if (box.querySelectorAll('.row').length > 4) {
+                $('#box').children('div:last-child').remove();
+                gameover();
+                notClick();
+            }
+        }
+        function move() {
+            // 给最后一个row 标记 是最后一行
+
+            $('#box').children('div:last-child').addClass('last');
+            speed += 1;
+            box.style.top = speed + 'px';
+            if (change == 100) {
+                createRow();
+                change = 0;
+            }
+            change += 1;
+        }
+        createRow();
+        document.getElementById('start').addEventListener('click', function () {
+            if (isStart == false) {
+                times = setInterval(move, 10);
+                isStart = true;
+            }
+        });
+        document.getElementById('pause').addEventListener('click', function () {
+            window.clearInterval(times);
+            isStart = false;
+            notClick();
+        });
+        $(document).on('click', '.last > .black', function () {
+            $(this).parent().remove();
+            score++;
+            $('h1').text('得分：' + score);
+
+        })
+        $(document).on('click', '.last > .item', function () {
+            score = 0;
+            gameover();
+            notClick();
+
+        })
+
+        function gameover() {
+            alert('game over');
+            window.clearInterval(times);
+            isStart = false;
+            $('h1').text('得分：' + score);
+
+        }
+        function notClick() {
+            $('#box').children('div:last-child').removeClass('last');
+        }
+    </script>
 </body>
 
 </html>
