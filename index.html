@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 
 <head>
@@ -23,10 +24,294 @@
             
         }
         
+=======
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>太阳系</title>
+    <style>
+        body {
+            background-color: #333;
+            margin: 0;
+            overflow: hidden;
+            background-image: url("bg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100% ;
+            height: 1000px;
+        }
+
+        .main {}
+
+        .sun {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            background-image: url("sun.png");
+            background-size: contain;
+            /*第一个值水平方向移动距离，可以是负值
+              第二个值竖直方向移动距离
+              第三个值模糊度
+              第四个颜色
+            */
+            box-shadow: 0px 0px 270px orange;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -35px;
+            margin-top: -35px;
+            animation-name: run;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .MercuryPath {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 1px solid white;
+            margin-left: -65px;
+            margin-top: -65px;
+            animation-name: run;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .mercury {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #9b6928;
+            position: absolute;
+            top: 60px;
+            margin-left: -5px;
+        }
+
+        @keyframes run {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .VenusPath {
+            width: 200px;
+            height: 200px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+            animation-name: run;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .venus {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 95px;
+            margin-left: -5px;
+        }
+
+        .earthPath {
+            width: 270px;
+            height: 270px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -135px;
+            margin-top: -135px;
+            animation-name: run;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .earth {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            top: 125px;
+            margin-left: -10px;
+            animation-name: run;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .moon {
+            width: 10px;
+            height: 10px;
+            background-color: lightblue;
+            border-radius: 50%;
+            position: absolute;
+            margin-left: -13px;
+            top: -6px;
+        }
+
+        .marsPath {
+            width: 340px;
+            height: 340px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -170px;
+            margin-top: -170px;
+            animation-name: run;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .mars {
+            width: 12px;
+            height: 12px;
+            background-color: goldenrod;
+            border-radius: 50%;
+            position: absolute;
+            top: 164px;
+            margin-left: -6px;
+        }
+
+        .JupiterPath {
+            width: 410px;
+            height: 410px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -205px;
+            margin-top: -205px;
+            animation-name: run;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .jupiter {
+            width: 12px;
+            height: 12px;
+            background-color: green;
+            border-radius: 50%;
+            position: absolute;
+            top: 199px;
+            margin-left: -6px;
+        }
+
+        .SaturnPath {
+            width: 480px;
+            height: 480px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -240px;
+            margin-top: -240px;
+            animation-name: run;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .saturn {
+            width: 12px;
+            height: 12px;
+            background-color: lightgray;
+            border-radius: 50%;
+            position: absolute;
+            top: 234px;
+            margin-left: -6px;
+        }
+
+        .saturnCircle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid lightgray;
+            border-radius: 50%;
+            margin-left: -6px;
+            margin-top: -6px;
+            box-shadow: 0 0 12px lightgray;
+        }
+
+        .UranusPath {
+            width: 550px;
+            height: 550px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -275px;
+            margin-top: -275px;
+            animation-name: run;
+            animation-duration: 9s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .uranus {
+            width: 12px;
+            height: 12px;
+            background-color: brown;
+            border-radius: 50%;
+            position: absolute;
+            top: 269px;
+            margin-left: -6px;
+        }
+
+        .NeptunePath {
+            width: 620px;
+            height: 620px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -310px;
+            margin-top: -310px;
+            animation-name: run;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .neptune {
+            width: 12px;
+            height: 12px;
+            background-color: lightseagreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 304px;
+            margin-left: -6px;
+        }
+      
+>>>>>>> d432fdfd75aafe8f09fce2300abfb0ccd5e810d1
     </style>
 </head>
 
 <body>
+<<<<<<< HEAD
 
     <section>
         <h1>
@@ -42,3 +327,65 @@
 </body>
 
 </html>
+=======
+    <main>
+        <div class="sun">
+        </div>
+
+        <div class="MercuryPath">
+            <div class="mercury">
+
+            </div>
+        </div>
+
+        <div class="VenusPath">
+            <div class="venus">
+
+            </div>
+        </div>
+
+        <div class="earthPath">
+            <div class="earth" >
+                <img  src="earth.png" width="20px" height="20px" alt="">
+                <div class="moon">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="marsPath">
+            <div class="mars">
+
+            </div>
+        </div>
+
+        <div class="JupiterPath">
+            <div class="jupiter">
+
+            </div>
+        </div>
+
+        <div class="SaturnPath">
+            <div class="saturn">
+                <div class="saturnCircle">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="UranusPath">
+            <div class="uranus">
+
+            </div>
+        </div>
+
+        <div class="NeptunePath">
+            <div class="neptune">
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+>>>>>>> d432fdfd75aafe8f09fce2300abfb0ccd5e810d1
