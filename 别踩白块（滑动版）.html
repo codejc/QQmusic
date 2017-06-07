@@ -168,13 +168,13 @@
             isStart = false;
             notClick();
         });
-        $(document).on('click', '.last > .black', function () {
+        $(document).on('touchstart', '.last > .black', function () {
             $(this).parent().remove();
             score++;
             $('h1').text('得分：' + score);
 
         })
-        $(document).on('click', '.last > .item', function () {
+        $(document).on('touchstart', '.last > .item', function () {
             score = 0;
             gameover();
             notClick();
