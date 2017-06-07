@@ -126,11 +126,11 @@
         }
 
         //鼠标点击事件
-        $(document).on('click', '.last .black', function () {
+        $(document).on('touchstart', '.last .black', function () {
             move();
             $('.score').text('得分：' + score);
         })
-        $(document).on('click', '.last .item', function () {
+        $(document).on('touchstart', '.last .item', function () {
             alert('game over');
             score = 0;
             $('.score').text('得分：' + score);
