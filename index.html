@@ -52,7 +52,7 @@
 
         .tags div {
             width: 11vw;
-            height: 4vw;
+            height: 4.5vw;
             border: 1px solid white;
             border-radius: 1vw;
             display: inline-block;
@@ -173,25 +173,45 @@
             <div id="endtime">04:22</div>
         </div>
     </main>
-    <script src="./jquery.js"></script>
+    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
     <script>
         var isDown = false;
-        $('#circle').mousedown(function () {
+        $('#circle').on('touchstart', function () {
             isDown = true;
-            console.log('点击了')
-        }).mouseup(function () {
+            console.log('dianjike')
+        })
+        $('#circle').on('touchend', function () {
             isDown = false;
             console.log('松开了')
-        }).mouseleave(function () {
-            isDown = false;
+        })
 
-        });
-        $('#progressBar').mousemove(function (e) {
+        $('#circle').on('touchmove', function (e) {
+            var x = e.originalEvent.targetTouches[0].pageX;
+            var length = parseInt($('#nowtime').css('width'));
+            var left = parseInt($('#circle').css('left'))
+            var width = parseInt($('body').width() / 100 * 84.5);
+            console.log(width)
             if (isDown == true) {
-                $('#circle').css(
-                    'left', e.pageX - 20
-                )
-                console.log( $('#circle').css('left'));
+                if (left > length && left < width) {
+                    $('#circle').css(
+                        'left', x - 10
+                    )
+                    e.preventDefault();
+
+                    console.log(length)
+                    $('#line').css(
+                        'width', left - length
+                    )
+
+                }
+                if (left <= length) {
+                    $('#circle').css('left', left + 1);
+                    console.log('sa')
+                }
+                if (left >= width) {
+                    $('#circle').css('left', left - 1);
+
+                }
             }
         })
     </script>
