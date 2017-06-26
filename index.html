@@ -5,154 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-weight: 300;
-            color: white;
-        }
 
-        body {
-            /*background-color: black;        */
-        }
-
-        header {
-            width: 100%;
-            height: 30vw;
-            text-align: center;
-            font-size: 3.5vw;
-        }
-
-        .title {
-            margin: 0 auto;
-            font-size: 5vw;
-            color: white;
-            line-height: 10vw;
-        }
-
-        .mask {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            filter: blur(50px);
-            z-index: 0;
-            background-image: url(王菲.jpg)
-        }
-
-        main {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            background-color: rgba(1, 1, 1, 0.2);
-        }
-
-        .tags div {
-            width: 11vw;
-            height: 4.5vw;
-            border: 1px solid white;
-            border-radius: 1vw;
-            display: inline-block;
-            margin: 0.5vw;
-            margin-top: 2vw;
-        }
-
-        #CD {
-            margin: 0 auto;
-            width: 90vw;
-            height: 90vw;
-            background-image: url(王菲.jpg);
-            border-radius: 50%;
-            /*background-position:-6vw -20vw ;*/
-            border: 2vw solid rgb(36, 39, 67);
-            box-sizing: border-box;
-            background-size: 100%;
-            background-repeat: no-repeat;
-            animation: rotate 30s linear infinite;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .control {
-            width: 100%;
-            height: 10vw;
-            text-align: center;
-            line-height: 10vw;
-        }
-
-        .control div {
-            font-size: 2vw;
-            width: 12%;
-            text-align: center;
-            color: white;
-        }
-
-        #nowtime {
-            float: left;
-        }
-
-        #endtime {
-            float: right;
-        }
-
-        #progressBar {
-            float: left;
-            width: 76vw;
-            height: 10vw;
-            line-height: 10vw;
-        }
-
-        #line {
-            /*float: left;*/
-            position: absolute;
-            line-height: 10vw;
-            width: 60vw;
-            height: 0.6vw;
-            margin-top: 4.5vw;
-            border-radius: 2vw;
-            background-color: rgb(0, 205, 126);
-        }
-
-        #circle {
-            position: absolute;
-            left: 72vw;
-            height: 5vw;
-            width: 5vw;
-            margin-top: 2.5vw;
-            background-color: rgb(0, 205, 126);
-            border-radius: 50%;
-        }
-
-        #greyline {
-            line-height: 10vw;
-            width: 76vw;
-            height: 0.6vw;
-            margin-top: 4.5vw;
-            border-radius: 2vw;
-            background-color: grey;
-            position: absolute;
-            z-index: 0;
-        }
     </style>
 </head>
 
 <body>
-    <audio src="./传奇.mp3"></audio>
+    <audio src="./src/传奇.mp3"></audio>
     <div class="mask"></div>
     <main>
         <header>
             <div class="title">传奇</div>
-            <div class="singer">—&nbsp 王菲 &nbsp—</div>
+            <div class="singer">—&nbsp <span>王菲</span> &nbsp—</div>
             <div class="tags">
                 <div>标准</div>
                 <div>MV</div>
@@ -160,60 +26,50 @@
             </div>
         </header>
         <section>
-            <div id="CD">
+            <!--碟和歌词-->
+            <div class="CDPlate">
+                <div id="CD">
+                </div>
+                <div id="onesentence" style="margin-top:5vw"></div>
+            </div>
+            <!--歌词板-->
+            <div class="lyricsPlate" style="display:none">
+                <ul>
+
+                </ul>
             </div>
         </section>
         <div class="control">
-            <div id="nowtime">04:13</div>
+            <div id="nowtime">00:00</div>
             <div id="progressBar">
                 <div id="greyline"></div>
                 <div id="line"></div>
                 <div id="circle"></div>
+
             </div>
             <div id="endtime">04:22</div>
         </div>
+        <div id="controlbar">
+            <div class="previous"><img src="./images/previous.png" alt=""></div>
+            <div class="play "><img play='false' src="./images/play.png" alt=""></div>
+            <div class="next"><img src="./images/next.png" alt=""></div>
+        </div>
+        <footer>
+            <div class="like"></div>
+            <div class="download"></div>
+            <div class="share"></div>
+            <div class="comment"></div>
+        </footer>
     </main>
-    <script src="./jquery.js"></script>
     <script>
-        var isDown = false;
-        $('#circle').on('touchstart', function () {
-            isDown = true;
-            console.log('dianjike')
-        })
-        $('#circle').on('touchend', function () {
-            isDown = false;
-            console.log('松开了')
-        })
-
-        $('#circle').on('touchmove', function (e) {
-            var x = e.originalEvent.targetTouches[0].pageX;
-            var length = parseInt($('#nowtime').css('width'));
-            var left = parseInt($('#circle').css('left'))
-            var width = parseInt($('body').width() / 100 * 84.5);
-            console.log(width)
-            if (isDown == true) {
-                if (left > length && left < width) {
-                    $('#circle').css(
-                        'left', x - 10
-                    )
-                    e.preventDefault();
-
-                    console.log(length)
-                    $('#line').css(
-                        'width', left - length
-                    )
-
-                }
-                if (left <= length) {
-                    $('#circle').css('left', left + 1);
-                    console.log('sa')
-                }
-                if (left >= width) {
-                    $('#circle').css('left', left - 1);
-
-                }
-            }
-        })
+        let lrcs = [];
+    </script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/control.js"></script>
+    <script src="./js/eventHandle.js"></script>
+    <script src="./js/传奇.js"></script>
+    <script src="./js/知道不知道.js"></script>
+    <script>
     </script>
 </body>
 
